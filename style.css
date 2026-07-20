@@ -1,1 +1,125 @@
+:root {
+    --bg-light: #f1f5f9;
+    --panel-bg: #ffffff;
+    --text-dark: #1e293b;
+    --stroke-dark: #1e293b;
+    --pop-yellow: #ffb703;
+    --pop-pink: #ff477e;
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.dice-container {
+    background-color: var(--panel-bg);
+    padding: 35px 25px;
+    border-radius: 24px;
+    border: 3px solid var(--stroke-dark);
+    box-shadow: 6px 6px 0px var(--stroke-dark);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.dice-header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.dice-header p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* Komponen Boks Dadu Pop Art */
+.dice-box {
+    display: inline-block;
+    font-size: 6rem; /* Ukuran simbol emoji dadu unicode besar */
+    background-color: #fafafa;
+    color: var(--pop-pink);
+    border: 4px solid var(--stroke-dark);
+    border-radius: 20px;
+    width: 130px;
+    height: 130px;
+    line-height: 110px;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px 0px var(--stroke-dark);
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+/* Papan Informasi Petunjuk Teks */
+.info-board {
+    background-color: #f8fafc;
+    border: 2px solid var(--stroke-dark);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 25px;
+}
+
+#txt-status {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #475569;
+}
+
+/* Tombol Lempar Dadu Pop Art */
+.btn-pop {
+    width: 100%;
+    background-color: var(--pop-yellow);
+    color: var(--text-dark);
+    border: 3px solid var(--stroke-dark);
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--stroke-dark);
+    transition: all 0.1s ease;
+    outline: none;
+}
+
+.btn-pop:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--stroke-dark);
+}
+
+.btn-pop:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--stroke-dark);
+}
+
+.btn-pop:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+}
+
+/* --- ANIMASI GAYA CSS BERPUTAR (Disuntikkan via JS saat dikocok) --- */
+.kocok-animasi {
+    animation: putarDadu 0.5s ease-in-out;
+}
+
+@keyframes putarDadu {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-15deg) scale(0.9); }
+    75% { transform: rotate(375deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
